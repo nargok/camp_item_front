@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-const App = () => {
+const Items = () => {
   const [itemsData, setItemsData] = useState([])
 
   async function fetchAllItems() {
-    const res = await fetch('http://localhost:3001/api/v1/items');
+    const res = await fetch(`${process.env.REACT_APP_API_SERVER}/api/v1/items`);
     const responseData = await res.json();
-    console.log(responseData)
-    console.log(responseData.data)
     setItemsData(responseData.data);
   }
 
@@ -30,4 +28,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default Items;
